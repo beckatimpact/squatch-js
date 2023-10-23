@@ -1,0 +1,75 @@
+<html>
+    <head>
+        <title>
+            Example Purchase Event
+        </title>
+        <link rel="stylesheet" href="style.css">
+        
+    <script>
+        
+        // Include squatch.js loader script in your website
+        !function(a,b){a("squatch","https://fast.ssqt.io/squatch-js@2",b)}(function(a,b,c){var d,e,f;c["_"+a]={},c[a]={},c[a].ready=function(b){c["_" + a].ready =  c["_" + a].ready || [];c["_" + a].ready.push(b);},e=document.createElement("script"),e.async=1,e.src=b,f=document.getElementsByTagName("script")[0],f.parentNode.insertBefore(e,f)},this);
+
+
+        // Define your project tenant
+        window.squatchTenant = "test_aym93okveuya4";
+
+        // Include the JWT for the user the event is tied to; the payload must be in "Write Token" format
+        window.squatchToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoic2FtcGxlLnVzZXJAZXhhbXBsZS5jb20iLCJhY2NvdW50SWQiOiJzYW1wbGUudXNlckBleGFtcGxlLmNvbSIsImVtYWlsIjoic2FtcGxlLnVzZXJAZXhhbXBsZS5jb20ifX0.NDGGhiwN7-tyo2xIiFBfchpqxKxqpEsjCxWUMTEflN4";
+
+
+        // Wait for squatch.js to be ready
+        squatch.ready(function(){
+
+            // Object containing the user & event object
+            var eventObj = {
+                "userId": "sample.user@example.com",
+                "accountId": "sample.user@example.com",
+                "events": [{
+                "key": "purchase",
+                "fields":{
+                    "checkout_id": "123456",
+                    "order_id": "234567",
+                    "total": 100,
+                    "revenue": 40,
+                    "tax": 15,
+                    "currency": "USD",
+                    "products": [	{
+                    "product_id": "p_name",
+                    "name": "Product Name",
+                    "price": 85,
+                    "quantity": 1				
+                        }]
+                    }
+                }]
+            };
+
+
+        // If window.squatchToken is not set, pass in a jwt with .track(eventObj, { jwt }), otherwise include the {squatchToken}
+        // If you choose not to include a JWT, then you must use an empty JSON object instead ({}).
+        squatch.events().track(eventObj, {squatchToken}).then(function(response) {
+        }).catch(function(error){
+            console.log(error);
+            })
+
+        });
+    </script>
+
+    </head>
+    <body>
+        <h1>Example Event Page</h1>
+        <table class="tg">
+            <thead>
+            <tr>
+                <th class="tg-hx4o" colspan="2">Purchase Event Logged</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td class="tg-baqh">    Each time this page loads, an event will be sent that will add an additional reward point to the Referrer displayed on the <a href="verified-widget.html" target="_blank">Verified Access In-App Widget</a>.</td>
+            </tr>
+            </tbody>
+        </table>
+        <h3><a href="index.html">Index Page</a></h3>
+    </body>
+</html>
