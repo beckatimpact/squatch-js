@@ -31,3 +31,8 @@
     - `squatch.events().track()` method (Track user event)
 - **instant-widget.html:**
     - Embedded "Instant Acess Widget"
+
+## squatch.JS Advanced Use Cases:
+ > Read more on additional squatch.js functionality.
+- **Reference Guide:** https://docs.saasquatch.com/developer/squatchjs/v2/advanced-use-cases
+- **Sample Gists:** https://gist.github.com/beckatimpact/08ae2c57995e9f59c6342125dc000bf7
